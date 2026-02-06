@@ -426,6 +426,51 @@ docker run -v ~/.nanobot:/root/.nanobot --rm nanobot agent -m "Hello!"
 docker run -v ~/.nanobot:/root/.nanobot --rm nanobot status
 ```
 
+## ☁️ Render Deployment
+
+Deploy nanobot to Render for 24/7 availability with minimal setup.
+
+### Quick Deploy (Recommended)
+
+1. **Fork this repository** to your GitHub account
+
+2. **Connect to Render**:
+   - Go to [Render Dashboard](https://dashboard.render.com)
+   - Click "New" → "Blueprint"
+   - Connect your GitHub account and select your forked repository
+
+3. **Configure Environment Variables**:
+   Render will automatically detect the `render.yaml` file and configure the service. You can modify the following variables in the Render dashboard:
+
+   | Variable | Value | Description |
+   |----------|-------|-------------|
+   | `NANOBOT_PROVIDERS__GEMINI__API_KEY` | Your Gemini API Key | Get from [Google AI Studio](https://aistudio.google.com/app/apikey) |
+   | `NANOBOT_CHANNELS__TELEGRAM__TOKEN` | Your Telegram Bot Token | Get from [@BotFather](https://t.me/BotFather) |
+   | `NANOBOT_CHANNELS__TELEGRAM__ENABLED` | `true` | Enable Telegram integration |
+   | `NANOBOT_CHANNELS__TELEGRAM__ALLOW_FROM` | `["8025985115"]` | Restrict to specific user IDs |
+   | `NANOBOT_AGENTS__DEFAULTS__MODEL` | `gemini-3-flash-preview-2025-02-05` | Modal Gemini 3 Flash Preview model |
+
+4. **Deploy**:
+   - Click "Apply" to create the service
+   - Render will build the Docker container and start the gateway
+   - Once deployed, your bot will be available 24/7
+
+### Manual Deployment
+
+If you prefer manual setup:
+
+1. Create a new Web Service or Background Worker on Render
+2. Set environment variable `NANOBOT_PROVIDERS__GEMINI__API_KEY` to your Gemini API key
+3. Set environment variable `NANOBOT_CHANNELS__TELEGRAM__TOKEN` to your Telegram bot token
+4. Set the build command: `docker build -t nanobot .`
+5. Set the start command: `nanobot gateway`
+
+### Verify Deployment
+
+- Check Render logs for successful startup: `nanobot gateway started successfully`
+- Send `/start` to your Telegram bot
+- Try a message like "Hello!" to test the AI response
+
 ## 📁 Project Structure
 
 ```

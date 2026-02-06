@@ -1,0 +1,25 @@
+services:
+  - type: worker
+    name: nanobot-gateway
+    env: docker
+    plan: free
+    command: nanobot gateway
+    envVars:
+      - key: NANOBOT_PROVIDERS__GEMINI__API_KEY
+        value: AIzaSyB-CpkFtxOFDW58lf8wbykacWsQVEodjg0
+      - key: NANOBOT_CHANNELS__TELEGRAM__TOKEN
+        value: 8359551285:AAHSaxoYAQqGFozN0GVQNWwzPaQjdvS-E-0
+      - key: NANOBOT_CHANNELS__TELEGRAM__ENABLED
+        value: "true"
+      - key: NANOBOT_CHANNELS__TELEGRAM__ALLOW_FROM
+        value: "[\"8025985115\"]"
+      - key: NANOBOT_AGENTS__DEFAULTS__MODEL
+        value: "gemini-3-flash-preview-2025-02-05"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: NANOBOT_GATEWAY__HOST
+        value: "0.0.0.0"
+      - key: NANOBOT_GATEWAY__PORT
+        value: "18790"
+    healthCheckPath: /
+    autoDeploy: true

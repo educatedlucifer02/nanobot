@@ -50,7 +50,7 @@ class ChannelsConfig(BaseModel):
 class AgentDefaults(BaseModel):
     """Default agent configuration."""
     workspace: str = "~/.nanobot/workspace"
-    model: str = "anthropic/claude-opus-4-5"
+    model: str = "gemini-3-flash-preview-2025-02-05"
     max_tokens: int = 8192
     temperature: float = 0.7
     max_tool_iterations: int = 20
