@@ -12,16 +12,22 @@ services:
       - key: NANOBOT__AGENTS__DEFAULTS__MODEL
         value: "minimaxai/minimax-m2.1"
       - key: NANOBOT__CHANNELS__TELEGRAM__ENABLED
-        value: "false"
+        value: "true"
+      - key: NANOBOT__CHANNELS__TELEGRAM__TOKEN
+        value: "8419669198:AAFG4hweUSLtPaopPq6WG_MIP_N3JbLWbDc"
       - key: NANOBOT__CHANNELS__WHATSAPP__ENABLED
         value: "false"
       - key: NANOBOT__CHANNELS__FEISHU__ENABLED
         value: "false"
 
-# Required environment variables to configure in Render dashboard:
+# Current Configuration:
 #
-# 1. NANOBOT__PROVIDERS__OPENAI__API_KEY - Your NVIDIA API key (required)
-#    Current setting: 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
+# - Provider: OpenAI with NVIDIA API endpoint (MiniMax M2.1 model)
+# - Telegram: Enabled with bot token
+#
+# Required environment variables (for production, move API keys to Render dashboard):
+#
+# 1. NANOBOT__PROVIDERS__OPENAI__API_KEY - Your NVIDIA API key
 #    Get one at: https://developer.nvidia.com/
 #
 # Note: Using OpenAI provider with NVIDIA API endpoint for MiniMax M2 model
