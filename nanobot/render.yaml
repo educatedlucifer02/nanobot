@@ -1,0 +1,44 @@
+services:
+  - type: worker
+    name: nanobot
+    plan: free
+    buildCommand: uv pip install --system -e .
+    startCommand: nanobot gateway
+    envVars:
+      - key: NANOBOT__PROVIDERS__OPENROUTER__API_BASE
+        value: "https://openrouter.ai/api/v1"
+      - key: NANOBOT__AGENTS__DEFAULTS__MODEL
+        value: "anthropic/claude-opus-4-5"
+      - key: NANOBOT__CHANNELS__TELEGRAM__ENABLED
+        value: "false"
+      - key: NANOBOT__CHANNELS__WHATSAPP__ENABLED
+        value: "false"
+      - key: NANOBOT__CHANNELS__FEISHU__ENABLED
+        value: "false"
+
+# Required environment variables to configure in Render dashboard:
+#
+# 1. NANOBOT__PROVIDERS__OPENROUTER__API_KEY - Your OpenRouter API key (required)
+#    Get one at: https://openrouter.ai/keys
+#
+# Optional channel configuration:
+# 2. For Telegram:
+#    - NANOBOT__CHANNELS__TELEGRAM__TOKEN (your bot token from @BotFather)
+#    - NANOBOT__CHANNELS__TELEGRAM__ENABLED = "true"
+#    - NANOBOT__CHANNELS__TELEGRAM__ALLOW_FROM (optional, list of user IDs)
+#
+# 3. For WhatsApp:
+#    - NANOBOT__CHANNELS__WHATSAPP__ENABLED = "true"
+#    - NANOBOT__CHANNELS__WHATSAPP__BRIDGE_URL (WebSocket URL to WhatsApp bridge)
+#    - NANOBOT__CHANNELS__WHATSAPP__ALLOW_FROM (optional)
+#
+# 4. For Feishu:
+#    - NANOBOT__CHANNELS__FEISHU__APP_ID (from Feishu Open Platform)
+#    - NANOBOT__CHANNELS__FEISHU__APP_SECRET (from Feishu Open Platform)
+#    - NANOBOT__CHANNELS__FEISHU__ENABLED = "true"
+#
+# Optional tools:
+# 5. For web search:
+#    - NANOBOT__TOOLS__WEB__SEARCH__API_KEY (Brave Search API key)
+#
+# See RENDER_DEPLOYMENT.md for detailed setup instructions.
