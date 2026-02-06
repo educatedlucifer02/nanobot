@@ -6,7 +6,6 @@ services:
     startCommand: nanobot gateway
     envVars:
       - key: NANOBOT__PROVIDERS__OPENAI__API_KEY
-        value: "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"
       - key: NANOBOT__PROVIDERS__OPENAI__API_BASE
         value: "https://integrate.api.nvidia.com/v1"
       - key: NANOBOT__AGENTS__DEFAULTS__MODEL
@@ -14,7 +13,6 @@ services:
       - key: NANOBOT__CHANNELS__TELEGRAM__ENABLED
         value: "true"
       - key: NANOBOT__CHANNELS__TELEGRAM__TOKEN
-        value: "8419669198:AAFG4hweUSLtPaopPq6WG_MIP_N3JbLWbDc"
       - key: NANOBOT__CHANNELS__WHATSAPP__ENABLED
         value: "false"
       - key: NANOBOT__CHANNELS__FEISHU__ENABLED
