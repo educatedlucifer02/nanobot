@@ -3,7 +3,7 @@ services:
     name: nanobot-gateway
     env: docker
     plan: free
-    command: nanobot gateway
+    startCommand: nanobot gateway
     envVars:
       - key: NANOBOT_PROVIDERS__GEMINI__API_KEY
         value: AIzaSyB-CpkFtxOFDW58lf8wbykacWsQVEodjg0
