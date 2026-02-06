@@ -5,10 +5,12 @@ services:
     buildCommand: uv pip install --system -e .
     startCommand: nanobot gateway
     envVars:
-      - key: NANOBOT__PROVIDERS__OPENROUTER__API_BASE
-        value: "https://openrouter.ai/api/v1"
+      - key: NANOBOT__PROVIDERS__OPENAI__API_KEY
+        value: "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"
+      - key: NANOBOT__PROVIDERS__OPENAI__API_BASE
+        value: "https://integrate.api.nvidia.com/v1"
       - key: NANOBOT__AGENTS__DEFAULTS__MODEL
-        value: "anthropic/claude-opus-4-5"
+        value: "minimaxai/minimax-m2.1"
       - key: NANOBOT__CHANNELS__TELEGRAM__ENABLED
         value: "false"
       - key: NANOBOT__CHANNELS__WHATSAPP__ENABLED
@@ -18,8 +20,11 @@ services:
 
 # Required environment variables to configure in Render dashboard:
 #
-# 1. NANOBOT__PROVIDERS__OPENROUTER__API_KEY - Your OpenRouter API key (required)
-#    Get one at: https://openrouter.ai/keys
+# 1. NANOBOT__PROVIDERS__OPENAI__API_KEY - Your NVIDIA API key (required)
+#    Current setting: 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
+#    Get one at: https://developer.nvidia.com/
+#
+# Note: Using OpenAI provider with NVIDIA API endpoint for MiniMax M2 model
 #
 # Optional channel configuration:
 # 2. For Telegram:
